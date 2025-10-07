@@ -19,7 +19,7 @@ public class U5D1Application {
 
         m.printMenu();
         System.out.println(ctx.getBean("costoCoperto"));
-        System.out.println(ctx.getBean("ordine1"));
+        System.out.println(ctx.getBean("ordine2"));
 
         ctx.close();
 

@@ -144,7 +144,7 @@ public class AppConfig {
         list1.add(pizzaHawaiianBean());
         list1.add(waterBean());
 
-        return new Ordine(2, list1, tavolo, StatoOrdine.IN_CORSO, coperto);
+        return new Ordine(2, list1, tavolo, StatoOrdine.SERVITO, coperto);
     }
 
 }
