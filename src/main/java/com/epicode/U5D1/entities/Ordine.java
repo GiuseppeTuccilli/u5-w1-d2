@@ -14,10 +14,10 @@ public class Ordine {
     private Tavolo tavolo;
     private StatoOrdine stato;
     private LocalDateTime oraAcquisizione;
-
     private double costo;
+    private int numCoperti;
 
-    public Ordine(int numero, List<Item> items, Tavolo tavolo, StatoOrdine stato, double costoCoperto) {
+    public Ordine(int numero, List<Item> items, Tavolo tavolo, StatoOrdine stato, double costoCoperto, int numeroCop) {
         this.oraAcquisizione = LocalDateTime.now();
         this.numeroOrdine = numero;
         this.items = items;
@@ -27,7 +27,7 @@ public class Ordine {
         for (int i = 0; i < items.size(); i++) {
             sum = sum + items.get(i).getPrice();
         }
-        this.costo = costoCoperto + sum;
+        this.costo = (costoCoperto * numeroCop) + sum;
 
     }
 

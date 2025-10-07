@@ -135,7 +135,7 @@ public class AppConfig {
         list1.add(pizzaMargheritaBean());
         list1.add(pizzaSalamiBean());
 
-        return new Ordine(1, list1, tavolo, StatoOrdine.IN_CORSO, coperto);
+        return new Ordine(1, list1, tavolo, StatoOrdine.IN_CORSO, coperto, 3);
     }
 
     @Bean(name = "ordine2")
@@ -144,7 +144,7 @@ public class AppConfig {
         list1.add(pizzaHawaiianBean());
         list1.add(waterBean());
 
-        return new Ordine(2, list1, tavolo, StatoOrdine.SERVITO, coperto);
+        return new Ordine(2, list1, tavolo, StatoOrdine.SERVITO, coperto, 4);
     }
 
 }
