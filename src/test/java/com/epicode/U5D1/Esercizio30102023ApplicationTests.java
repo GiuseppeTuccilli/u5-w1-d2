@@ -70,7 +70,7 @@ class Esercizio30102023ApplicationTests {
         Ordine or1 = ctx.getBean("ordine1", Ordine.class);
         Ordine or2 = ctx.getBean("ordine2", Ordine.class);
         double sumCost = or1.getCosto() + or2.getCosto();
-        assertTrue(sumCost > 53);
+        assertTrue(sumCost > 53.97);
         assertTrue(sumCost < 54.97);
 
         ctx.close();
