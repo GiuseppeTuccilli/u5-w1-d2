@@ -2,6 +2,8 @@ package com.epicode.U5D1;
 
 import com.epicode.U5D1.entities.*;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -44,5 +46,24 @@ class Esercizio30102023ApplicationTests {
 
         ctx.close();
     }
+
+    @ParameterizedTest
+    @CsvSource({"1, 11.280000000000001", "2, 16.28", "3, 21.28"})
+    void costoCoperti(int cop, double res) {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        Pizza margherita = ctx.getBean("pizza_margherita", Pizza.class);
+        Drink acqua = ctx.getBean("water", Drink.class);
+        List<Item> ordList = new ArrayList<Item>();
+        ordList.add(margherita);
+        ordList.add(acqua);
+        Tavolo t = ctx.getBean("tavolo1", Tavolo.class);
+        double copS = ctx.getBean("costoCoperto", Double.class);
+        Ordine ordine = new Ordine(5, ordList, t, StatoOrdine.SERVITO, copS, cop);
+        double costo = ordine.getCosto();
+        assertEquals(res, costo);
+
+        ctx.close();
+    }
+
 
 }
