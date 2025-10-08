@@ -10,8 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class Esercizio30102023ApplicationTests {
@@ -61,6 +60,18 @@ class Esercizio30102023ApplicationTests {
         Ordine ordine = new Ordine(5, ordList, t, StatoOrdine.SERVITO, copS, cop);
         double costo = ordine.getCosto();
         assertEquals(res, costo);
+
+        ctx.close();
+    }
+
+    @Test
+    void costoOrdiniBean() {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        Ordine or1 = ctx.getBean("ordine1", Ordine.class);
+        Ordine or2 = ctx.getBean("ordine2", Ordine.class);
+        double sumCost = or1.getCosto() + or2.getCosto();
+        assertTrue(sumCost > 53);
+        assertTrue(sumCost < 54.97);
 
         ctx.close();
     }

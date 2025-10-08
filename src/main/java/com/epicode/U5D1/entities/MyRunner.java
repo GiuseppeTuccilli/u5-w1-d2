@@ -10,10 +10,14 @@ public class MyRunner implements CommandLineRunner {
     @Autowired
     @Qualifier("ordine1")
     Ordine ordine;
+    @Autowired
+    @Qualifier("ordine2")
+    Ordine ordine2;
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println(ordine);
+        System.out.println(ordine2);
 
     }
 }
